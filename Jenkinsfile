@@ -1,7 +1,7 @@
 pipeline {
     agent any
 	environment {
-                      PROJECT_ROOT = 'C:/Users/fake2/Documents/RepoJenkins/java-tomcat-maven-example'
+                      PROJECT_ROOT = 'C:\Users\fake2\Documents\RepoJenkins\java-tomcat-maven-example'
 		}
     stages {
 		
