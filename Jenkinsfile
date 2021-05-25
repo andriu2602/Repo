@@ -8,6 +8,7 @@ pipeline {
 		
         stage('Build') {
             steps {
+				echo "PATH=${PROJECT_ROOT}"
 				bat 'cd ${PROJECT_ROOT}'				
 				bat 'mvn -f  clean install'
                 bat 'echo "Hello World lo logre"'
