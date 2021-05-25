@@ -6,8 +6,9 @@ pipeline {
     stages {
 		
 		stage('conection') {
+		steps{
 		git 'https://github.com/carolinagzr/java-tomcat-maven-example.git'	
-		
+			}
 		}
         stage('Build') {
             steps {
