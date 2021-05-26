@@ -13,13 +13,14 @@ pipeline {
 				
 							
 				bat 'mvn clean install'
-                bat 'echo "Hello World lo logre"'
+                echo "Compilado"
 
             }
         }
 		stage('deploy'){
 			steps{
 				deploy adapters: [tomcat8(credentialsId: 'd24ddd84-ffe2-40f6-ba08-f54c0ed58c67', path: '', url: 'http://localhost:8085/')], contextPath: 'java-tomcat-maven-example', war: 'target/*.war'
+				echo "Desplegado"
 				
 			
 			}
