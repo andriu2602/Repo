@@ -8,15 +8,7 @@ pipeline {
 		git credentialsId: '166f5d56-43fd-4c19-9999-6720de690b1e', url: 'https://github.com/andriu2602/HW_nodejs.git'
 		}
 		}
-        stage('Build') {
-            steps {
-				
-							
-				
-                echo "Compilado"
-
-            }
-        }
+        
 		stage('deploy'){
 			steps{
 				bat 'npm start'
