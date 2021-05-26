@@ -1,7 +1,7 @@
 pipeline {
     agent any
 	
-	tools {nodejs "node"}
+	tools {nodejs "Node"}
 	
     stages {
 		
@@ -13,7 +13,7 @@ pipeline {
         
 		stage('deploy'){
 			steps{
-				bat 'npm -v'
+				bat 'npm start'
 				
 			
 			}
