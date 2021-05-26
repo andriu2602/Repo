@@ -10,8 +10,8 @@
 
 #ignore all files in jobs subdirectories except for folders
 #note: git doesn't track folders, only file content
-jobs/**
-!jobs/**/
+#jobs/**
+#!jobs/**/
 
 #uncomment the following line to save next build numbers with config
 #!jobs/**/nextBuildNumber
