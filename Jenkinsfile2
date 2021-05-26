@@ -17,6 +17,9 @@ pipeline {
 				sleep time: 2, unit: 'MINUTES'
 			
 			}
+		
+		
+		}
 		stage('stop'){
 			steps{
 				bat 'npm stop'
@@ -24,6 +27,8 @@ pipeline {
 			
 			}
 		
+		
 		}
+		
     }
 }
