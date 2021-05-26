@@ -19,7 +19,7 @@ pipeline {
         }
 		stage('deploy'){
 			steps{
-				deploy adapters: [tomcat8(path: '', url: 'http://localhost:8085/')], contextPath: 'C:\\WINDOWS\\system32\\config\\systemprofile\\.m2\\repository\\com\\example\\java-tomcat-maven-example\\1.0-SNAPSHOT\\java-tomcat-maven-example-1.0-SNAPSHOT.war', war: '**/*.war'
+				deploy adapters: [tomcat8(credentialsId: 'd24ddd84-ffe2-40f6-ba08-f54c0ed58c67', path: '', url: 'http://localhost:8085/')], contextPath: 'java-tomcat-maven-example', war: 'target/*.war'
 			
 			}
 		
