@@ -11,18 +11,18 @@ pipeline {
 		}
 		}
         
-		stage('deploy'){
+		stage('buil'){
 			steps{
-				bat 'npm start'
-				sleep time: 2, unit: 'MINUTES'
+				bat 'npm install pm2 -g'
+				
 			
 			}
 		
 		
 		}
-		stage('stop'){
+		stage('deploy'){
 			steps{
-				bat 'npm stop'
+				bat 'pm2 start index.js'
 				
 			
 			}
