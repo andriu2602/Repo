@@ -7,11 +7,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-//Variables logica
-@Field String defaultOption="00_ZERO"
-@Field def labelParameters = []
-@Field def userWeblogic
-@Field def passWeblogic
+
 
 
 //------------------------------INICIO VARIABLES MODIFICABLES----------------------------------------------------------
