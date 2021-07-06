@@ -67,79 +67,14 @@ node ('master') {
 		labelParameters.add([$class: 'WHideParameterDefinition', defaultValue: 'APP', description: '', name: 'mon_tipo'])
 		labelParameters.add([$class: 'WHideParameterDefinition', defaultValue: 'SISCOI', description: '', name: 'mon_plataforma'])
 		labelParameters.add([$class: 'WHideParameterDefinition', defaultValue: 'CD', description: '', name: 'mon_practica'])
-        properties(
+      
             [parameters(
                 labelParameters
             )]
-        )
+        
     
-        stage('Download Artifacts Nexus') {
-            cleanWs()
-            if(Refresh_Parameters == "false"){
-				for(component in infoComponents.keySet()){
-					if(params."$component" !=defaultOption){
-						println "[INFO] Descargando COMPONENTE: "+component+ " Version: "+params."$component"
-						downloadsComponents(infoComponents.get(component)[1],infoComponents.get(component)[2],params."$component",infoComponents.get(component)[3])
-					}
-				}
-				
-            }else{
-                println "Refrescando parametros!!"
-            } 
-        }
-		stage('Shutdown Servers') {
-            if(Refresh_Parameters == "false"){
-				if(SHUTDOWN_SERVERS == "true"){
-					taskWeblogic("shutdown")
-				}
-            }else{
-                println "Refrescando parametros!!"
-            } 
-        }
-		stage('unDeploy Apps') {
-            if(Refresh_Parameters == "false"){
-				if(Undeploy_Components == "true"){
-					taskWeblogic("undeploy")
-				}
-            }else{
-                println "Refrescando parametros!!"
-            } 
-        }
-		stage('Borrando temporales') {
-            if(Refresh_Parameters == "false"){
-				if(Borrado_temporales == "true"){
-					taskWeblogic("deleteTemps")
-				}
-            }else{
-                println "Refrescando parametros!!"
-            } 
-        }
-		stage('Deploy Apps') {
-            if(Refresh_Parameters == "false"){
-				if(Deploy_Components == "true"){
-					taskWeblogic("deploy")
-				}
-            }else{
-                println "Refrescando parametros!!"
-            } 
-        }
-		stage('Start Servers') {
-            if(Refresh_Parameters == "false"){
-				if(START_SERVERS == "true"){
-					taskWeblogic("start")
-				}
-            }else{
-                println "Refrescando parametros!!"
-            } 
-        }
+       
 		
-		stage('Notificacion') {
-            if(Refresh_Parameters == "false"){
-				emailext attachLog: false, attachmentsPattern: "", body:'''${SCRIPT, template="groovy-html.template"}''', subject: "${JOB_NAME} # ${BUILD_NUMBER} ${currentBuild.currentResult}", to: "desplieguebus_team@ath.com.co"
-            }else{
-                println "Refrescando parametros!!"
-            } 
-        }
     }catch(Exception errorTotal){
         
         cleanWs()
