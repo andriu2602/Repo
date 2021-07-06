@@ -62,18 +62,7 @@ node ('master') {
         labelParameters.add([$class: 'BooleanParameterDefinition', defaultValue: false, description: '', name: 'Borrado_temporales'])
         labelParameters.add([$class: 'BooleanParameterDefinition', defaultValue: true, description: '', name: 'Deploy_Components'])
         labelParameters.add([$class: 'BooleanParameterDefinition', defaultValue: true, description: '', name: 'START_SERVERS'])
-        for(String newTarget in availableTargets){
-            labelParameters.add([$class: 'BooleanParameterDefinition', defaultValue: false, description: '', name: newTarget])
-        }
-		for(String component in infoComponents.keySet()){
-			def repository = infoComponents.get(component)[1]
-			def artifactId = infoComponents.get(component)[2]
-            getNexusVersion(component, repository, groupId, artifactId)	
-
-        }
-		for(String componentActual in infoComponents.keySet()){
-            getWl(componentActual)		
-        }
+       
         labelParameters.add([$class: 'WHideParameterDefinition', defaultValue: 'PT', description: '', name: 'mon_ambiente'])
 		labelParameters.add([$class: 'WHideParameterDefinition', defaultValue: 'APP', description: '', name: 'mon_tipo'])
 		labelParameters.add([$class: 'WHideParameterDefinition', defaultValue: 'SISCOI', description: '', name: 'mon_plataforma'])
